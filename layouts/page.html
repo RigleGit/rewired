@@ -1,0 +1,121 @@
+{{ define "main" }}
+
+{{ $isPost := eq .Section "posts" }}
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format "2006-01-02" }}
+{{ $postsPage := site.GetPage "/posts" }}
+
+{{ $next := .NextInSection }}
+{{ if not $next }}
+	{{ $next = .PrevInSection }}
+{{ end }}
+
+<article class="page {{ if $isPost }}page--post{{ end }}">
+	{{ if and $isPost $postsPage }}
+		<a class="page__back" href="{{ $postsPage.RelPermalink }}">
+			← {{ i18n "back_to_blog" }}
+		</a>
+	{{ end }}
+
+	<header class="page__header">
+		<h1 class="page__title">{{ .Title }}</h1>
+
+		{{ if $isPost }}
+			<div class="page__meta">
+				{{ with site.Params.author }}
+					<span>{{ . }}</span>
+					<span aria-hidden="true">//</span>
+				{{ end }}
+
+				<time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+				<span aria-hidden="true">//</span>
+				<span>{{ .WordCount }} {{ i18n "words" }}</span>
+
+				<span aria-hidden="true">//</span>
+				<span>{{ .ReadingTime }} {{ i18n "minutes" }}</span>
+			</div>
+		{{ end }}
+
+		{{ with .Description }}
+			<p class="page__description">{{ . }}</p>
+		{{ end }}
+	</header>
+
+	{{ $tocEnabled := true }}
+	{{ $tocOrdered := false }}
+	{{ $tocStartLevel := 1 }}
+	{{ $tocEndLevel := 3 }}
+
+	{{ with site.Params.toc }}
+		{{ if isset . "enabled" }}
+			{{ $tocEnabled = index . "enabled" }}
+		{{ end }}
+
+		{{ if isset . "ordered" }}
+			{{ $tocOrdered = index . "ordered" }}
+		{{ end }}
+
+		{{ with or (index . "startLevel") (index . "startlevel") (index . "start_level") }}
+			{{ $tocStartLevel = . }}
+		{{ end }}
+
+		{{ with or (index . "endLevel") (index . "endlevel") (index . "end_level") }}
+			{{ $tocEndLevel = . }}
+		{{ end }}
+	{{ end }}
+
+	{{ with .Params.toc }}
+		{{ if isset . "enabled" }}
+			{{ $tocEnabled = index . "enabled" }}
+		{{ end }}
+
+		{{ if isset . "ordered" }}
+			{{ $tocOrdered = index . "ordered" }}
+		{{ end }}
+
+		{{ with or (index . "startLevel") (index . "startlevel") (index . "start_level") }}
+			{{ $tocStartLevel = . }}
+		{{ end }}
+
+		{{ with or (index . "endLevel") (index . "endlevel") (index . "end_level") }}
+			{{ $tocEndLevel = . }}
+		{{ end }}
+	{{ end }}
+
+	{{ $tocHTML := .Fragments.ToHTML $tocStartLevel $tocEndLevel $tocOrdered }}
+
+	{{ if and $isPost $tocEnabled (in (printf "%s" $tocHTML) "<li") }}
+		<aside class="page-toc" aria-labelledby="page-toc-title">
+			<h2 id="page-toc-title" class="page-toc__title">
+				{{ i18n "contents" }}
+			</h2>
+
+			{{ $tocHTML }}
+		</aside>
+	{{ end }}
+
+	<div class="page__content">
+		{{ .Content }}
+	</div>
+
+	<footer class="page__footer">
+		{{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+		{{ partial "terms.html" (dict "taxonomy" "categories" "page" .) }}
+
+		{{ if and $isPost $next }}
+			<a class="next-post" href="{{ $next.RelPermalink }}">
+				<span class="next-post__left" aria-hidden="true">←</span>
+
+				<span class="next-post__content">
+					<span class="next-post__label">{{ i18n "read_next" }}</span>
+					<span class="next-post__title">{{ $next.Title }}</span>
+				</span>
+
+				<span class="next-post__right" aria-hidden="true">→</span>
+			</a>
+		{{ end }}
+	</footer>
+</article>
+
+{{ end }}

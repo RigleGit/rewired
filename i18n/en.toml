@@ -1,0 +1,89 @@
+[subnodes]
+other = "subnodes"
+
+[latest_posts]
+other = "latest writings"
+
+[projects]
+other = "projects"
+
+[no_posts]
+other = "No posts published yet."
+
+[no_projects]
+other = "No projects published yet."
+
+[tags]
+other = "tags"
+
+[categories]
+other = "categories"
+
+[back_to_blog]
+other = "back to blog"
+
+[words]
+other = "words"
+
+[minutes]
+other = "min"
+
+[contents]
+other = "Contents"
+
+[read_next]
+other = "Read next"
+
+[project_filters]
+other = "Project filters"
+
+[show]
+other = "show"
+
+[filter_all]
+other = "all"
+
+[status_active]
+other = "active"
+
+[status_paused]
+other = "paused"
+
+[status_completed]
+other = "completed"
+
+[blog_filters]
+other = "Blog filters"
+
+[blog_sidebar]
+other = "Blog sidebar"
+
+[filter_by]
+other = "filter by"
+
+[search]
+other = "search"
+
+[search_posts]
+other = "Search posts"
+
+[search_placeholder]
+other = "Search posts..."
+
+[archive]
+other = "archive"
+
+[no_matching_posts]
+other = "No posts match the current filter."
+
+[pagination]
+other = "Pagination"
+
+[all_years]
+other = "all years"
+
+[skip_to_content]
+other = "Skip to content"
+
+[no_terms]
+other = "No terms yet."

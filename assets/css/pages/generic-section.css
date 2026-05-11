@@ -1,0 +1,30 @@
+/* Generic section pages: newsletter, about, contact */
+
+.generic-section {
+  max-width: var(--content-width);
+}
+
+.generic-section__header {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.generic-section__title {
+  margin: 0;
+  color: var(--pink);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 24px rgba(255, 121, 198, 0.2);
+}
+
+.generic-section__description {
+  max-width: 78ch;
+  margin: 0.9rem 0 0;
+  color: var(--text);
+}
+
+.generic-section__content {
+  max-width: var(--article-width);
+}

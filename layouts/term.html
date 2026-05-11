@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+{{ $pages := .Pages.ByDate.Reverse }}
+
+<section class="term-page" aria-labelledby="term-title">
+	<header class="term-header">
+		<h1 id="term-title" class="term-title">
+			/#{{ .Title | lower }}<span class="cursor" aria-hidden="true">_</span>
+		</h1>
+
+		{{ with .Content }}
+			<div class="term-description page__content">
+				{{ . }}
+			</div>
+		{{ end }}
+	</header>
+
+	{{ if $pages }}
+		<div class="term-list">
+			{{ range $pages }}
+				<article class="term-card">
+					<a class="term-card__link" href="{{ .RelPermalink }}">
+						<time class="term-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+							{{ .Date.Format "2006-01-02" }}
+						</time>
+
+						<span class="term-card__main">
+							<span class="term-card__title">{{ .Title }}</span>
+
+							<span class="term-card__description">
+								{{ with .Description }}
+									{{ . }}
+								{{ else }}
+									{{ .Summary | plainify | truncate 150 }}
+								{{ end }}
+							</span>
+						</span>
+
+						<span class="term-card__reading">
+							{{ .ReadingTime }} {{ i18n "minutes" }}
+						</span>
+
+						<span class="term-card__arrow" aria-hidden="true">→</span>
+					</a>
+				</article>
+			{{ end }}
+		</div>
+	{{ else }}
+		<p class="empty-state">{{ i18n "no_posts" }}</p>
+	{{ end }}
+</section>
+
+{{ end }}

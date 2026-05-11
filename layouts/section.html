@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+<section class="generic-section" aria-labelledby="section-title">
+  <header class="generic-section__header">
+    <h1 id="section-title" class="generic-section__title">
+      /{{ with .Params.displayTitle }}{{ . }}{{ else }}{{ .Title | lower }}{{ end }}<span class="cursor" aria-hidden="true">_</span>
+    </h1>
+
+    {{ with .Description }}
+      <p class="generic-section__description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ with .Content }}
+    <div class="generic-section__content page__content">
+      {{ . }}
+    </div>
+  {{ end }}
+</section>
+
+{{ end }}

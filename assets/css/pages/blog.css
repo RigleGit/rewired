@@ -1,0 +1,335 @@
+/* Blog listing */
+
+.blog-page {
+  max-width: var(--content-width);
+}
+
+.blog-header {
+  margin-bottom: 1.6rem;
+}
+
+.blog-title {
+  margin: 0;
+  color: var(--pink);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 24px rgba(255, 121, 198, 0.2);
+}
+
+.blog-description {
+  max-width: 78ch;
+  margin: 0.9rem 0 0;
+  color: var(--text);
+}
+
+.blog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  gap: 2rem;
+  align-items: start;
+}
+
+.blog-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  color: var(--muted-soft);
+  font-size: 0.92rem;
+}
+
+.blog-filters__label {
+  margin-right: 0.35rem;
+}
+
+.blog-filter,
+.blog-tax-button {
+  border: 1px solid rgba(189, 147, 249, 0.55);
+  background: rgba(189, 147, 249, 0.045);
+  color: var(--purple);
+  font: inherit;
+  cursor: pointer;
+}
+
+.blog-filter {
+  padding: 0.25rem 0.7rem;
+}
+
+.blog-filter:hover,
+.blog-filter.is-active,
+.blog-tax-button:hover,
+.blog-tax-button.is-active {
+  border-color: rgba(139, 233, 253, 0.85);
+  color: var(--cyan);
+  background: rgba(139, 233, 253, 0.08);
+  text-shadow: 0 0 12px rgba(139, 233, 253, 0.25);
+}
+
+.blog-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.blog-card {
+  border: 1px solid var(--line);
+  background: rgba(40, 42, 54, 0.14);
+}
+
+.blog-card[hidden] {
+  display: none;
+}
+
+.blog-card:hover {
+  border-color: rgba(255, 121, 198, 0.48);
+  background: rgba(40, 42, 54, 0.24);
+}
+
+.blog-card__link {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr 4rem auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  color: var(--text);
+}
+
+.blog-card__link:hover {
+  color: var(--text);
+}
+
+.blog-card__date {
+  color: var(--green);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.blog-card__main {
+  display: grid;
+  gap: 0.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--cyan);
+}
+
+.blog-card__title {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.blog-card__description {
+  max-width: 68ch;
+  color: var(--muted-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.blog-card__tag {
+  border: 1px solid rgba(139, 233, 253, 0.42);
+  color: var(--cyan);
+  padding: 0.05rem 0.4rem;
+  font-size: 0.76rem;
+  background: rgba(139, 233, 253, 0.035);
+}
+
+.blog-card__reading {
+  color: var(--muted-soft);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.blog-card__arrow {
+  color: var(--pink);
+  font-size: 1.5rem;
+}
+
+.blog-card:hover .blog-card__title,
+.blog-card:hover .blog-card__arrow {
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(139, 233, 253, 0.28);
+}
+
+.blog-empty {
+  margin: 1rem 0 0;
+  color: var(--muted-soft);
+}
+
+/* Blog sidebar */
+
+.blog-sidebar {
+  border-left: 1px solid var(--line);
+  padding-left: 1.2rem;
+}
+
+.blog-widget {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.blog-widget:first-child {
+  padding-top: 0;
+}
+
+.blog-widget__title {
+  margin: 0 0 0.8rem;
+  color: var(--pink);
+  font-size: 1.1rem;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.blog-search {
+  position: relative;
+  display: block;
+}
+
+.blog-search__input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(17, 18, 26, 0.5);
+  color: var(--text);
+  font: inherit;
+  padding: 0.55rem 2.2rem 0.55rem 0.65rem;
+}
+
+.blog-search__input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 2px rgba(139, 233, 253, 0.1);
+}
+
+.blog-search__input::placeholder {
+  color: var(--muted-soft);
+}
+
+.blog-search__icon {
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cyan);
+  pointer-events: none;
+}
+
+.blog-tax-list {
+  display: grid;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-tax-link,
+.blog-tax-button {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr auto;
+  align-items: center;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--cyan);
+  text-align: left;
+  font: inherit;
+}
+
+.blog-tax-link span:last-child,
+.blog-tax-button span:last-child {
+  color: var(--purple);
+}
+
+.blog-tax-link:hover {
+  color: var(--pink);
+}
+
+.blog-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.blog-tag-cloud__tag {
+  border: 1px solid rgba(139, 233, 253, 0.42);
+  color: var(--cyan);
+  padding: 0.08rem 0.42rem;
+  font-size: 0.8rem;
+  background: rgba(139, 233, 253, 0.035);
+}
+
+.blog-tag-cloud__tag:hover {
+  color: var(--pink);
+  border-color: rgba(255, 121, 198, 0.58);
+  background: rgba(255, 121, 198, 0.05);
+}
+
+/* Blog pagination */
+
+.blog-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.3rem;
+}
+
+.blog-pagination__button {
+  min-width: 2.8rem;
+  border: 1px solid rgba(139, 233, 253, 0.35);
+  background: rgba(139, 233, 253, 0.035);
+  color: var(--cyan);
+  font: inherit;
+  padding: 0.28rem 0.65rem;
+  cursor: pointer;
+}
+
+.blog-pagination__button:hover {
+  border-color: rgba(255, 121, 198, 0.65);
+  color: var(--pink);
+  background: rgba(255, 121, 198, 0.06);
+}
+
+.blog-pagination__button.is-active {
+  border-color: rgba(255, 121, 198, 0.75);
+  color: var(--pink);
+  background: rgba(255, 121, 198, 0.08);
+  font-weight: 700;
+}
+
+.blog-pagination__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.blog-pagination__ellipsis {
+  color: var(--muted-soft);
+  padding: 0 0.25rem;
+}
+
+.blog-tax-button.is-active {
+  color: var(--pink);
+}
+
+.blog-tax-button.is-active span:first-child {
+  color: var(--pink);
+}
+
+.blog-filter.is-active {
+  border-color: rgba(139, 233, 253, 0.85);
+  color: var(--cyan);
+  background: rgba(139, 233, 253, 0.08);
+}
+
+.blog-card[hidden],
+.blog-pagination[hidden],
+.blog-empty[hidden] {
+  display: none;
+}

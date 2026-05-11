@@ -1,0 +1,170 @@
+baseURL = "https://example.org/"
+title = "rewired"
+theme = "rewired"
+
+defaultContentLanguage = "es"
+defaultContentLanguageInSubdir = false
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+blogPageSize = 5
+
+[params.toc]
+enabled = true
+ordered = false
+startLevel = 2
+endLevel = 3
+
+[languages]
+
+[languages.es]
+label = "Español"
+locale = "es-ES"
+weight = 1
+contentDir = "content/es"
+title = "Mi web"
+
+[languages.es.params]
+author = "Tu nombre"
+descriptionLines = [
+  "Una descripción corta de tu web,",
+  "tu trabajo, tus proyectos o tus intereses.",
+]
+tagline = "Escribo en el [blog](/posts/), comparto [proyectos](/projects/) y envío una [newsletter](/newsletter/)."
+
+[languages.es.params.footer]
+text = 'miweb.dev // hecho con ♥ y [Hugo](https://gohugo.io/) // tema [rewired](https://github.com/RigleGit/rewired)'
+prompt = "user@miweb.dev:~$"
+
+[[languages.es.menus.main]]
+name = "home"
+pageRef = "/"
+weight = 10
+
+[[languages.es.menus.main]]
+name = "blog"
+pageRef = "/posts"
+weight = 20
+
+[[languages.es.menus.main]]
+name = "proyectos"
+pageRef = "/projects"
+weight = 30
+
+[[languages.es.menus.main]]
+name = "about"
+pageRef = "/about"
+weight = 40
+
+[[languages.es.menus.main]]
+name = "contact"
+pageRef = "/contact"
+weight = 50
+
+[[languages.es.params.social]]
+name = "GitHub"
+url = "https://github.com/usuario"
+icon = "fa-brands fa-github"
+
+[[languages.es.params.social]]
+name = "YouTube"
+url = "https://youtube.com/@usuario"
+icon = "fa-brands fa-youtube"
+
+[[languages.es.params.social]]
+name = "Newsletter"
+url = "https://example.org/newsletter/"
+icon = "fa-solid fa-newspaper"
+
+[[languages.es.params.social]]
+name = "Email"
+url = "mailto:hello@example.org"
+icon = "fa-regular fa-envelope"
+
+[[languages.es.params.subnodes]]
+name = "docs.example.org"
+url = "https://docs.example.org"
+description = "Documentación, apuntes o recursos técnicos."
+
+[[languages.es.params.subnodes]]
+name = "lab.example.org"
+url = "https://lab.example.org"
+description = "Experimentos, prototipos y proyectos secundarios."
+
+
+[languages.en]
+label = "English"
+locale = "en-US"
+weight = 2
+contentDir = "content/en"
+title = "My website"
+
+[languages.en.params]
+author = "Your name"
+descriptionLines = [
+  "A short description of your website,",
+  "your work, projects, or interests.",
+]
+tagline = "I write on the [blog](/en/posts/), share [projects](/en/projects/), and send a [newsletter](/en/newsletter/)."
+
+[languages.en.params.footer]
+text = 'mywebsite.dev // made with ♥ and [Hugo](https://gohugo.io/) // theme [rewired](https://github.com/RigleGit/rewired)'
+prompt = "user@mywebsite.dev:~$"
+
+[[languages.en.menus.main]]
+name = "home"
+pageRef = "/"
+weight = 10
+
+[[languages.en.menus.main]]
+name = "blog"
+pageRef = "/posts"
+weight = 20
+
+[[languages.en.menus.main]]
+name = "projects"
+pageRef = "/projects"
+weight = 30
+
+[[languages.en.menus.main]]
+name = "about"
+pageRef = "/about"
+weight = 40
+
+[[languages.en.menus.main]]
+name = "contact"
+pageRef = "/contact"
+weight = 50
+
+[[languages.en.params.social]]
+name = "GitHub"
+url = "https://github.com/user"
+icon = "fa-brands fa-github"
+
+[[languages.en.params.social]]
+name = "YouTube"
+url = "https://youtube.com/@user"
+icon = "fa-brands fa-youtube"
+
+[[languages.en.params.social]]
+name = "Newsletter"
+url = "https://example.org/newsletter/"
+icon = "fa-solid fa-newspaper"
+
+[[languages.en.params.social]]
+name = "Email"
+url = "mailto:hello@example.org"
+icon = "fa-regular fa-envelope"
+
+[[languages.en.params.subnodes]]
+name = "docs.example.org"
+url = "https://docs.example.org"
+description = "Documentation, notes, or technical resources."
+
+[[languages.en.params.subnodes]]
+name = "lab.example.org"
+url = "https://lab.example.org"
+description = "Experiments, prototypes, and side projects."

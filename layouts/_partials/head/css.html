@@ -1,0 +1,28 @@
+{{- $styles := slice -}}
+
+<!-- Be careful where you add the css if you are editing this template -->
+{{- range resources.Match "css/[0-9][0-9]-*.css" -}}
+	{{- $styles = $styles | append . -}}
+{{- end -}}
+
+{{- range resources.Match "css/components/*.css" -}}
+	{{- $styles = $styles | append . -}}
+{{- end -}}
+
+{{- range resources.Match "css/pages/*.css" -}}
+	{{- $styles = $styles | append . -}}
+{{- end -}}
+
+{{- with resources.Get "css/99-responsive.css" -}}
+	{{- $styles = $styles | append . -}}
+{{- end -}}
+
+{{- $css := $styles | resources.Concat "css/rewired.css" -}}
+
+{{- if hugo.IsDevelopment -}}
+	{{- $css = $css | css.Build (dict "sourceMap" "linked") -}}
+	<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{- else -}}
+	{{- $css = $css | css.Build (dict "minify" true "sourceMap" "none") | fingerprint -}}
+	<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}

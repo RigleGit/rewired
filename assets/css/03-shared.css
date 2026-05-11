@@ -1,0 +1,34 @@
+.cursor,
+.site-footer__cursor {
+  color: var(--cyan);
+  animation: cursor-blink 1.15s steps(2, start) infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.section-title {
+  margin: 0 0 0.55rem;
+  color: var(--purple);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.section-title--pink {
+  color: var(--pink);
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--muted-soft);
+}

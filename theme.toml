@@ -1,0 +1,21 @@
+name = "rewired"
+license = "MIT"
+licenselink = "https://github.com/RigleGit/rewired/blob/main/LICENSE"
+description = "A dark, minimal, terminal-inspired Hugo theme."
+homepage = "https://github.com/RigleGit/rewired"
+demosite = "https://rewired.rigle.dev/"
+tags = [
+    "blog",
+    "portfolio",
+    "dark",
+    "minimal",
+    "terminal",
+    "dracula",
+    "multilingual",
+]
+features = ["multilingual", "blog", "projects", "taxonomies", "responsive"]
+min_version = "0.158.0"
+
+[author]
+name = "Rodrigo Iglesias"
+homepage = "https://rigle.dev"

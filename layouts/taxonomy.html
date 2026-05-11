@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+{{ $terms := .Data.Terms.Alphabetical }}
+{{ $taxonomyLabel := i18n .Data.Plural | default .Title }}
+
+<section class="taxonomy-page" aria-labelledby="taxonomy-title">
+	<header class="taxonomy-header">
+		<h1 id="taxonomy-title" class="taxonomy-title">
+			/{{ $taxonomyLabel | lower }}<span class="cursor" aria-hidden="true">_</span>
+		</h1>
+
+		{{ with .Content }}
+			<div class="taxonomy-description page__content">
+				{{ . }}
+			</div>
+		{{ end }}
+	</header>
+
+	{{ if $terms }}
+		<div class="taxonomy-list">
+			{{ range $terms }}
+				<a class="taxonomy-row" href="{{ .Page.RelPermalink }}">
+					<span class="taxonomy-row__marker" aria-hidden="true">#</span>
+					<span class="taxonomy-row__name">{{ .Page.LinkTitle }}</span>
+					<span class="taxonomy-row__count">{{ .Count }}</span>
+					<span class="taxonomy-row__arrow" aria-hidden="true">→</span>
+				</a>
+			{{ end }}
+		</div>
+	{{ else }}
+		<p class="empty-state">{{ i18n "no_terms" }}</p>
+	{{ end }}
+</section>
+
+{{ end }}

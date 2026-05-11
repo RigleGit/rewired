@@ -1,0 +1,89 @@
+[subnodes]
+other = "subnodos"
+
+[latest_posts]
+other = "últimos textos"
+
+[projects]
+other = "proyectos"
+
+[no_posts]
+other = "Todavía no hay textos publicados."
+
+[no_projects]
+other = "Todavía no hay proyectos publicados."
+
+[tags]
+other = "etiquetas"
+
+[categories]
+other = "categorías"
+
+[back_to_blog]
+other = "volver al blog"
+
+[words]
+other = "palabras"
+
+[minutes]
+other = "min"
+
+[contents]
+other = "Contenidos"
+
+[read_next]
+other = "Leer a continuación"
+
+[project_filters]
+other = "Filtros de proyectos"
+
+[show]
+other = "mostrar"
+
+[filter_all]
+other = "todos"
+
+[status_active]
+other = "activo"
+
+[status_paused]
+other = "en pausa"
+
+[status_completed]
+other = "finalizado"
+
+[blog_filters]
+other = "Filtros del blog"
+
+[blog_sidebar]
+other = "Barra lateral del blog"
+
+[filter_by]
+other = "filtrar por"
+
+[search]
+other = "buscar"
+
+[search_posts]
+other = "Buscar entradas"
+
+[search_placeholder]
+other = "Buscar entradas..."
+
+[archive]
+other = "archivo"
+
+[no_matching_posts]
+other = "No hay entradas que coincidan con el filtro."
+
+[pagination]
+other = "Paginación"
+
+[all_years]
+other = "todos los años"
+
+[skip_to_content]
+other = "Saltar al contenido"
+
+[no_terms]
+other = "Todavía no hay términos."

@@ -1,0 +1,256 @@
+/* Page / article */
+
+.page {
+  max-width: var(--article-width);
+}
+
+.page__back {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: var(--cyan);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.page__back:hover {
+  color: var(--pink);
+}
+
+.page__header {
+  margin-bottom: 1.1rem;
+}
+
+.page__title {
+  margin: 0;
+  color: var(--pink);
+  font-size: clamp(2.1rem, 5vw, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 24px rgba(255, 121, 198, 0.2);
+}
+
+.page__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+  color: var(--muted-soft);
+  font-size: 0.86rem;
+}
+
+.page__description {
+  max-width: 76ch;
+  margin: 1rem 0 0;
+  color: var(--muted-soft);
+  font-size: 0.92rem;
+}
+
+/* TOC */
+
+.page-toc {
+  margin: 1rem 0 1.35rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  background: rgba(40, 42, 54, 0.22);
+}
+
+.page-toc__title {
+  margin: 0 0 0.4rem;
+  color: var(--pink);
+  font-size: 0.9rem;
+}
+
+.page-toc nav,
+.page-toc ul,
+.page-toc ol {
+  margin: 0;
+}
+
+.page-toc ul,
+.page-toc ol {
+  padding-left: 1.25rem;
+}
+
+.page-toc li + li {
+  margin-top: 0.1rem;
+}
+
+.page-toc a {
+  color: var(--cyan);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Article content */
+
+.page__content {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.page__content p {
+  max-width: 78ch;
+  margin: 0.55rem 0;
+}
+
+.page__content h2,
+.page__content h3,
+.page__content h4 {
+  margin: 1.15rem 0 0.35rem;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.page__content h2 {
+  color: var(--purple);
+  font-size: 1.15rem;
+}
+
+.page__content h3 {
+  color: var(--pink);
+  font-size: 1rem;
+}
+
+.page__content h4 {
+  color: var(--cyan);
+  font-size: 0.95rem;
+}
+
+.page__content a {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.page__content a:hover {
+  color: var(--pink);
+}
+
+.page__content ul,
+.page__content ol {
+  margin: 0.55rem 0;
+  padding-left: 1.35rem;
+}
+
+.page__content li + li {
+  margin-top: 0.18rem;
+}
+
+.page__content blockquote {
+  margin: 1rem 0;
+  padding: 0.45rem 0 0.45rem 1rem;
+  border-left: 2px solid var(--cyan);
+  color: var(--muted-soft);
+}
+
+.page__content code {
+  color: var(--yellow);
+  background: rgba(40, 42, 54, 0.65);
+  padding: 0.08rem 0.25rem;
+  border-radius: 0.18rem;
+}
+
+.page__content pre {
+  overflow-x: auto;
+  margin: 1rem 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  background: rgba(17, 18, 26, 0.82);
+}
+
+.page__content pre code {
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.page__content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.page__content th,
+.page__content td {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.6rem;
+}
+
+.page__content th {
+  color: var(--pink);
+  background: rgba(40, 42, 54, 0.35);
+}
+
+/* Figures */
+
+.content-figure,
+.page__content figure {
+  margin: 1rem 0;
+}
+
+.content-figure img,
+.page__content img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: rgba(17, 18, 26, 0.8);
+}
+
+.content-figure figcaption,
+.page__content figcaption {
+  margin-top: 0.35rem;
+  text-align: center;
+  color: var(--muted-soft);
+  font-size: 0.78rem;
+}
+
+.page__content em {
+  color: var(--muted-soft);
+}
+
+.page__content hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 1.6rem 0;
+}
+
+/* Next post */
+
+.next-post {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.3rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(40, 42, 54, 0.16);
+}
+
+.next-post:hover {
+  border-color: rgba(255, 121, 198, 0.55);
+  background: rgba(255, 121, 198, 0.045);
+}
+
+.next-post__left,
+.next-post__right {
+  color: var(--pink);
+  font-size: 1.35rem;
+}
+
+.next-post__content {
+  display: grid;
+  gap: 0.05rem;
+}
+
+.next-post__label {
+  color: var(--pink);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.next-post__title {
+  color: var(--text);
+  font-size: 0.9rem;
+}

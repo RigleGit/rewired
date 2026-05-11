@@ -1,0 +1,264 @@
+{{ define "main" }}
+
+{{ $posts := .RegularPages.ByDate.Reverse }}
+{{ $tags := index site.Taxonomies "tags" }}
+{{ $pageSize := site.Params.blogPageSize | default 5 }}
+
+{{ $categoryNames := slice }}
+{{ range $posts }}
+  {{ range (.Params.categories | default slice) }}
+    {{ $categoryNames = $categoryNames | append . }}
+  {{ end }}
+{{ end }}
+{{ $categoryNames = sort (uniq $categoryNames) }}
+
+<section
+  class="blog-page"
+  aria-labelledby="blog-title"
+  data-blog-page
+  data-blog-page-size="{{ $pageSize }}"
+>
+  <header class="blog-header">
+    <h1 id="blog-title" class="blog-title">
+      /{{ .Title | lower }}<span class="cursor" aria-hidden="true">_</span>
+    </h1>
+
+    {{ with .Description }}
+      <p class="blog-description">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="blog-layout">
+    <main class="blog-main">
+      <div class="blog-filters" aria-label="{{ i18n "blog_filters" }}">
+        <span class="blog-filters__label">{{ i18n "filter_by" }}:</span>
+
+        <button
+          class="blog-filter is-active"
+          type="button"
+          data-blog-category-filter="all"
+          aria-pressed="true"
+        >
+          {{ i18n "filter_all" }}
+        </button>
+
+        {{ range $categoryNames }}
+          <button
+            class="blog-filter"
+            type="button"
+            data-blog-category-filter="{{ . | urlize }}"
+            aria-pressed="false"
+          >
+            {{ . }}
+          </button>
+        {{ end }}
+      </div>
+
+      {{ if $posts }}
+        <div class="blog-list" data-blog-list>
+          {{ range $posts }}
+            {{ $postCategories := .Params.categories | default slice }}
+            {{ $categoryKeys := slice }}
+
+            {{ range $postCategories }}
+              {{ $categoryKeys = $categoryKeys | append (. | urlize) }}
+            {{ end }}
+
+            {{ $postYear := .Date.Format "2006" }}
+            {{ $postTags := .Params.tags | default slice }}
+            {{ $description := .Description | default "" }}
+            {{ $searchText := printf "%s %s %s %s %s" .Title $description (delimit $postTags " ") (delimit $postCategories " ") $postYear | lower }}
+
+            <article
+              class="blog-card"
+              data-blog-card
+              data-categories="{{ delimit $categoryKeys " " }}"
+              data-year="{{ $postYear }}"
+              data-search="{{ $searchText | htmlEscape }}"
+            >
+              <a class="blog-card__link" href="{{ .RelPermalink }}">
+                <time class="blog-card__date" datetime="{{ .Date.Format "2006-01-02" }}">
+                  {{ .Date.Format "2006-01-02" }}
+                </time>
+
+                <span class="blog-card__main">
+                  <span class="blog-card__title">{{ .Title }}</span>
+
+                  <span class="blog-card__description">
+                    {{ with .Description }}
+                      {{ . }}
+                    {{ else }}
+                      {{ .Summary | plainify | truncate 150 }}
+                    {{ end }}
+                  </span>
+
+                  {{ with .Params.tags }}
+                    <span class="blog-card__tags">
+                      {{ range first 5 . }}
+                        <span class="blog-card__tag">{{ . }}</span>
+                      {{ end }}
+                    </span>
+                  {{ end }}
+                </span>
+
+                <span class="blog-card__reading">
+                  {{ .ReadingTime }} {{ i18n "minutes" }}
+                </span>
+
+                <span class="blog-card__arrow" aria-hidden="true">→</span>
+              </a>
+            </article>
+          {{ end }}
+        </div>
+
+        <p class="blog-empty" data-blog-empty hidden>
+          {{ i18n "no_matching_posts" }}
+        </p>
+
+        <nav
+          class="blog-pagination"
+          aria-label="{{ i18n "pagination" }}"
+          data-blog-pagination
+        ></nav>
+      {{ else }}
+        <p class="empty-state">{{ i18n "no_posts" }}</p>
+      {{ end }}
+    </main>
+
+    <aside class="blog-sidebar" aria-label="{{ i18n "blog_sidebar" }}">
+      <section class="blog-widget blog-widget--search">
+        <h2 class="blog-widget__title">
+          /{{ i18n "search" }}
+        </h2>
+
+        <label class="blog-search">
+          <span class="sr-only">{{ i18n "search_posts" }}</span>
+
+          <input
+            class="blog-search__input"
+            type="search"
+            placeholder="{{ i18n "search_placeholder" }}"
+            data-blog-search
+          >
+
+          <span class="blog-search__icon" aria-hidden="true">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+        </label>
+      </section>
+
+      <section class="blog-widget">
+        <h2 class="blog-widget__title">
+          /{{ i18n "categories" }}
+        </h2>
+
+        <ul class="blog-tax-list">
+          <li>
+            <button
+              class="blog-tax-button is-active"
+              type="button"
+              data-blog-category-filter="all"
+              aria-pressed="true"
+            >
+              <span aria-hidden="true">→</span>
+              <span>{{ i18n "filter_all" }}</span>
+              <span>{{ len $posts }}</span>
+            </button>
+          </li>
+
+          {{ range $categoryNames }}
+            {{ $cat := . }}
+            {{ $catKey := . | urlize }}
+            {{ $count := 0 }}
+
+            {{ range $posts }}
+              {{ range (.Params.categories | default slice) }}
+                {{ if eq (. | urlize) $catKey }}
+                  {{ $count = add $count 1 }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+
+            <li>
+              <button
+                class="blog-tax-button"
+                type="button"
+                data-blog-category-filter="{{ $catKey }}"
+                aria-pressed="false"
+              >
+                <span aria-hidden="true">→</span>
+                <span>{{ $cat }}</span>
+                <span>{{ $count }}</span>
+              </button>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+
+      {{ if $posts }}
+        <section class="blog-widget">
+          <h2 class="blog-widget__title">
+            /{{ i18n "archive" }}
+          </h2>
+
+          <ul class="blog-tax-list">
+            <li>
+              <button
+                class="blog-tax-button is-active"
+                type="button"
+                data-blog-year-filter="all"
+                aria-pressed="true"
+              >
+                <span aria-hidden="true">→</span>
+                <span>{{ i18n "all_years" }}</span>
+                <span>{{ len $posts }}</span>
+              </button>
+            </li>
+
+            {{ range $posts.GroupByDate "2006" }}
+              <li>
+                <button
+                  class="blog-tax-button"
+                  type="button"
+                  data-blog-year-filter="{{ .Key }}"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">→</span>
+                  <span>{{ .Key }}</span>
+                  <span>{{ len .Pages }}</span>
+                </button>
+              </li>
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+
+      {{ with $tags }}
+        <section class="blog-widget">
+          <h2 class="blog-widget__title">
+            /{{ i18n "tags" }}
+          </h2>
+
+          <div class="blog-tag-cloud">
+            {{ range first 18 .Alphabetical }}
+              <a class="blog-tag-cloud__tag" href="{{ .Page.RelPermalink }}">
+                {{ .Page.LinkTitle }}
+              </a>
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    </aside>
+  </div>
+</section>
+
+{{ with resources.Get "js/blog-filter.js" }}
+  {{ $js := . | minify | fingerprint }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
+{{ else }}
+  <script>
+    console.warn("rewired: missing assets/js/blog-filter.js");
+  </script>
+{{ end }}
+
+{{ end }}

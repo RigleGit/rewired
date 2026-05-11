@@ -1,0 +1,17 @@
+<footer class="site-footer">
+	<div class="site-footer__meta">
+		{{ with site.Params.footer.text }}
+			{{ . | markdownify }}
+		{{ else }}
+			your web // hecho con ♥ y <a href="https://gohugo.io/">Hugo</a> // tema <a href="https://github.com/RigleGit/rewired">rewired</a>
+		{{ end }}
+	</div>
+
+	<div class="site-footer__prompt" aria-hidden="true">
+		{{ with site.Params.footer.prompt }}
+			{{ . }}
+		{{ else }}
+			you@your.web:~$
+		{{ end }}<span class="site-footer__cursor">_</span>
+	</div>
+</footer>

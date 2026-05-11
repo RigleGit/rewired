@@ -1,0 +1,142 @@
+{{ define "main" }}
+
+<section class="home-hero" aria-labelledby="home-title">
+	<h1 id="home-title" class="home-hero__title">
+		{{ site.Title }}<span class="cursor" aria-hidden="true">_</span>
+	</h1>
+
+	<h2 class="home-hero__name">{{ site.Params.author }}</h2>
+
+	<p class="home-hero__description">
+		{{ with site.Params.descriptionLines }}
+			{{ range . }}
+				<span>{{ . }}</span>
+			{{ end }}
+		{{ else }} 
+			{{ site.Params.description }}
+		{{ end }}
+	</p>
+
+	<p class="home-hero__tagline">
+		<span class="home-hero__pipe" aria-hidden="true">|</span>
+		<span class="home-hero__tagline-text">
+			{{ site.Params.tagline | markdownify }}
+		</span>
+	</p>
+</section>
+
+{{ with site.Params.social }}
+	<section class="home-social" aria-label="Social links">
+		{{ range . }}
+			<a class="home-social__link" href="{{ .url }}" rel="me noopener" target="_blank">
+				<span class="home-social__icon" aria-hidden="true">
+					{{ with .icon }}
+						<i class="{{ . }}"></i>
+					{{ else }}
+						◇
+					{{ end }}
+				</span>
+				<span>{{ .name }}</span>
+			</a>
+		{{ end }}
+	</section>
+{{ end }}
+
+{{ with site.Params.subnodes }}
+	<section class="home-section home-subnodes" aria-labelledby="subnodes-title">
+		<h2 id="subnodes-title" class="section-title">{{ i18n "subnodes" }}</h2>
+
+		<div class="node-list">
+			{{ range . }}
+				<a class="node-row" href="{{ .url }}">
+					<span class="node-row__prompt" aria-hidden="true">&gt;</span>
+					<span class="node-row__name">{{ .name }}</span>
+					<span class="node-row__description">{{ .description }}</span>
+					<span class="node-row__arrow" aria-hidden="true">→</span>
+				</a>
+			{{ end }}
+		</div>
+	</section>
+{{ end }}
+
+<section class="home-section home-posts" aria-labelledby="latest-posts-title">
+	<h2 id="latest-posts-title" class="section-title section-title--pink">
+		{{ i18n "latest_posts" }}
+	</h2>
+
+	{{ $posts := first 4 (where site.RegularPages "Section" "posts") }}
+
+	{{ if $posts }}
+		<div class="post-list">
+			{{ range $posts }}
+				<a class="post-row" href="{{ .RelPermalink }}">
+					<time class="post-row__date" datetime="{{ .Date.Format "2006-01-02" }}">
+						{{ .Date.Format "2006-01-02" }}
+					</time>
+					<span class="post-row__separator" aria-hidden="true">|</span>
+					<span class="post-row__title">{{ .Title }}</span>
+					<span class="post-row__arrow" aria-hidden="true">→</span>
+				</a>
+			{{ end }}
+		</div>
+	{{ else }}
+		<p class="empty-state">{{ i18n "no_posts" }}</p>
+	{{ end }}
+</section>
+
+<section class="home-section home-projects" aria-labelledby="projects-title">
+	<h2 id="projects-title" class="section-title">{{ i18n "projects" }}</h2>
+
+	{{ $projects := first 4 (where site.RegularPages "Section" "projects") }}
+
+	{{ if $projects }}
+		<div class="project-list">
+			{{ range $projects }}
+				{{ $accent := .Params.accent | default "purple" }}
+				{{ $accentValue := "" }}
+
+				{{ if or (hasPrefix $accent "#") (hasPrefix $accent "rgb") (hasPrefix $accent "hsl") }}
+					{{ $accentValue = $accent }}
+				{{ else }}
+					{{ $accentValue = printf "var(--%s)" $accent }}
+				{{ end }}
+
+				<a
+					class="project-row"
+					href="{{ .RelPermalink }}"
+					style="--project-accent: {{ $accentValue | safeCSS }};"
+				>
+					<span class="project-row__icon" aria-hidden="true">
+						{{ with .Params.icon }}
+							{{ if in . "fa-" }}
+								<i class="{{ . }}"></i>
+							{{ else }}
+								<span class="project-row__glyph">{{ . }}</span>
+							{{ end }}
+						{{ else }}
+							<i class="fa-solid fa-cube"></i>
+						{{ end }}
+					</span>
+
+					<span class="project-row__name">{{ .Title }}</span>
+
+					<span class="project-row__separator" aria-hidden="true">|</span>
+
+					<span class="project-row__description">
+						{{ with .Description }}
+							{{ . }}
+						{{ else }}
+							{{ .Summary | plainify | truncate 90 }}
+						{{ end }}
+					</span>
+
+					<span class="project-row__arrow" aria-hidden="true">→</span>
+				</a>
+			{{ end }}
+		</div>
+	{{ else }}
+		<p class="empty-state">{{ i18n "no_projects" }}</p>
+	{{ end }}
+</section>
+
+{{ end }}

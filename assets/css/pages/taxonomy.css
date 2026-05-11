@@ -1,0 +1,145 @@
+/* Taxonomy and term pages */
+
+.taxonomy-page,
+.term-page {
+  max-width: var(--content-width);
+}
+
+.taxonomy-header,
+.term-header {
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.taxonomy-title,
+.term-title {
+  margin: 0;
+  color: var(--pink);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 24px rgba(255, 121, 198, 0.2);
+}
+
+.taxonomy-description,
+.term-description {
+  max-width: var(--article-width);
+  margin-top: 0.9rem;
+}
+
+/* Taxonomy index: /tags/, /categories/ */
+
+.taxonomy-list {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.taxonomy-row {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr 4rem auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+
+.taxonomy-row:hover {
+  color: var(--text);
+}
+
+.taxonomy-row__marker {
+  color: var(--cyan);
+}
+
+.taxonomy-row__name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.taxonomy-row__count {
+  color: var(--purple);
+  text-align: right;
+}
+
+.taxonomy-row__arrow {
+  color: var(--pink);
+}
+
+.taxonomy-row:hover .taxonomy-row__name,
+.taxonomy-row:hover .taxonomy-row__arrow {
+  color: var(--pink);
+}
+
+/* Term page: /tags/hugo/, /categories/tutoriales/ */
+
+.term-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.term-card {
+  border: 1px solid var(--line);
+  background: rgba(40, 42, 54, 0.14);
+}
+
+.term-card:hover {
+  border-color: rgba(255, 121, 198, 0.48);
+  background: rgba(40, 42, 54, 0.24);
+}
+
+.term-card__link {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr 4rem auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  color: var(--text);
+}
+
+.term-card__link:hover {
+  color: var(--text);
+}
+
+.term-card__date {
+  color: var(--green);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.term-card__main {
+  display: grid;
+  gap: 0.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--cyan);
+}
+
+.term-card__title {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.term-card__description {
+  max-width: 68ch;
+  color: var(--muted-soft);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.term-card__reading {
+  color: var(--muted-soft);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.term-card__arrow {
+  color: var(--pink);
+  font-size: 1.5rem;
+}
+
+.term-card:hover .term-card__title,
+.term-card:hover .term-card__arrow {
+  color: var(--cyan);
+  text-shadow: 0 0 12px rgba(139, 233, 253, 0.28);
+}

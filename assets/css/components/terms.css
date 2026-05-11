@@ -1,0 +1,52 @@
+/* Terms / tags */
+
+.terms {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1.25rem 0 0.8rem;
+  color: var(--muted-soft);
+}
+
+.terms__label {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+.terms__label::after {
+  content: ":";
+}
+
+.terms__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.terms__link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(139, 233, 253, 0.45);
+  color: var(--cyan);
+  padding: 0.1rem 0.45rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  border-radius: 0.18rem;
+  background: rgba(139, 233, 253, 0.035);
+}
+
+.terms__link::before {
+  content: "#";
+  color: var(--muted-soft);
+  margin-right: 0.1rem;
+}
+
+.terms__link:hover {
+  color: var(--pink);
+  border-color: rgba(255, 121, 198, 0.65);
+  background: rgba(255, 121, 198, 0.06);
+}

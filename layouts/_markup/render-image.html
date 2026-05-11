@@ -1,0 +1,18 @@
+<figure class="content-figure">
+	<img
+		src="{{ .Destination | safeURL }}"
+		alt="{{ .Text }}"
+		{{ with .Title }}title="{{ . }}"{{ end }}
+		loading="lazy"
+	>
+
+	{{ if or .Title .Text }}
+		<figcaption>
+			{{ with .Title }}
+				{{ . }}
+			{{ else }}
+				{{ .Text }}
+			{{ end }}
+		</figcaption>
+	{{ end }}
+</figure>

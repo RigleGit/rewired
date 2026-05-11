@@ -1,0 +1,22 @@
+:root {
+  --bg: #181a2a;
+  --bg-deep: #10111a;
+  --bg-soft: #282a36;
+  --line: rgba(139, 146, 184, 0.28);
+
+  --text: #f8f8f2;
+  --muted: #6272a4;
+  --muted-soft: #a8b0d8;
+
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
+
+  --content-width: 980px;
+  --article-width: 820px;
+  --topbar-gap: 2rem;
+}

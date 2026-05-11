@@ -1,0 +1,52 @@
+<nav class="topbar" aria-label="Main navigation">
+	<div class="topbar__inner">
+		<ul class="topbar__menu">
+			{{ range site.Menus.main }}
+				{{ $isActive := false }}
+
+				{{ if $.IsMenuCurrent "main" . }}
+					{{ $isActive = true }}
+				{{ else if $.HasMenuCurrent "main" . }}
+					{{ $isActive = true }}
+				{{ else if and (eq .PageRef "/") $.IsHome }}
+					{{ $isActive = true }}
+				{{ else if and $.Section .PageRef }}
+					{{ $sectionPath := printf "/%s" $.Section }}
+					{{ if eq .PageRef $sectionPath }}
+						{{ $isActive = true }}
+					{{ end }}
+				{{ end }}
+
+				<li class="topbar__item">
+					<a class="topbar__link {{ if $isActive }}is-active{{ end }}" href="{{ .URL }}" 
+						{{ if $isActive }}aria-current="page" 
+						{{ end }}>
+						<span class="topbar__slash" aria-hidden="true">/</span>{{ .Name }}
+					</a>
+				</li>
+			{{ end }}
+		</ul>
+
+		<ul class="topbar__lang" aria-label="Language selector">
+			{{ $currentLang := site.Language.Name }}
+			{{ $translations := .AllTranslations }}
+
+			{{ if lt (len $translations) 2 }}
+				{{ $translations = site.Home.AllTranslations }}
+			{{ end }}
+
+			{{ range $translations }}
+				<li class="topbar__lang-item">
+					<a class="topbar__lang-link {{ if eq .Language.Name $currentLang }}is-active{{ end }}"
+						href="{{ .RelPermalink }}" hreflang="{{ .Language.Locale }}" lang="{{ .Language.Locale }}" 
+						{{ if eq
+							.Language.Name $currentLang
+						}}aria-current="page" 
+						{{ end }}>
+						{{ upper .Language.Name }}
+					</a>
+				</li>
+			{{ end }}
+		</ul>
+	</div>
+</nav>
