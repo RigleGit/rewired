@@ -2,6 +2,8 @@
 
 A dark, minimal, terminal-inspired Hugo theme.
 
+![Rewired home](rewired-home.jpeg)
+
 ## Features
 
 - Multilingual support
