@@ -22,6 +22,15 @@ Then, add the following line to your `config.toml`:
 ```toml
 theme = "rewired"
 ```
+## Configuration
+
+A complete demo site is available in `exampleSite/` deployed on [riglegit.github.io/rewired](https://riglegit.github.io/rewired).
+
+To use this theme in your own Hugo site, you can start from:
+
+```bash
+cp themes/rewired/hugo.example.toml hugo.toml
+```
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
