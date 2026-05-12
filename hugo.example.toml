@@ -94,7 +94,6 @@ name = "lab.example.org"
 url = "https://lab.example.org"
 description = "Experimentos, prototipos y proyectos secundarios."
 
-
 [languages.en]
 label = "English"
 locale = "en-US"

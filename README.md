@@ -2,7 +2,7 @@
 
 A dark, minimal, terminal-inspired Hugo theme.
 
-![Rewired home](rewired-home.jpeg)
+![Rewired home](https://raw.githubusercontent.com/riglegit/rewired/main/images/screenshot.jpg)
 
 ## Features
 
