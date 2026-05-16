@@ -101,9 +101,13 @@
 					{{ $accentValue = printf "var(--%s)" $accent }}
 				{{ end }}
 
+				{{ $url := .Params.projectUrl | default .RelPermalink }}
+				{{ $external := hasPrefix $url "http" }}
+
 				<a
 					class="project-row"
-					href="{{ .RelPermalink }}"
+					href="{{ $url }}"
+					{{ if $external }}target="_blank" rel="noopener noreferrer"{{ end }}
 					style="--project-accent: {{ $accentValue | safeCSS }};"
 				>
 					<span class="project-row__icon" aria-hidden="true">
